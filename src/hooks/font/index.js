@@ -6,7 +6,7 @@ import { ActivityIndicator, Text, View } from "react-native";
 
 const FontContext = createContext({});
 
-export function FontProvider({ Children }) {
+export function FontProvider({ children }) {
     const[loaded, error] = useFonts({
         regular: require('../../assets/fonts/Montserrat-Regular.ttf'),
         bold: require("../../assets/fonts/Montserrat-Bold.ttf"),
@@ -19,13 +19,13 @@ export function FontProvider({ Children }) {
         return
          <View style= {{ flex: 1, justifyContent: "center", alignItems: "center"}}>
           <Text style={{ fontSize: 28, marginTop: 15}}>
-            AFF QUE DIFICIL
+            Carregando as fontes 
           </Text>
           <ActivityIndicator size="large" color="#0000ff" />
          </View>;
 
     }
-    return <FontContext.Provider value={{loaded}}>{Children}</FontContext.Provider>;
+    return <FontContext.Provider value={{loaded}}>{children}</FontContext.Provider>;
 }
 
 export function useFont() {
